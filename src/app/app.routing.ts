@@ -17,7 +17,10 @@ export const router: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'email', component: EmailComponent },
     { path: 'pages', component: Pages, canActivate: [AuthGuard] },
-    { path :'pages/dashboard' , redirectTo : 'pages/dashboard', canActivate : [AuthGuard]}
+    { path :'pages/dashboard' , redirectTo : 'pages/dashboard', canActivate : [AuthGuard]},
+    {path: '404', component: LoginComponent},
+    {path: '**', redirectTo: '/404'}
+
 
 ];
 

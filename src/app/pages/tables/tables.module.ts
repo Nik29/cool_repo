@@ -16,6 +16,9 @@ import { CondensedTable } from './components/basicTables/components/condensedTab
 import { ContextualTable } from './components/basicTables/components/contextualTable';
 import { SmartTables } from './components/smartTables/smartTables.component';
 import { SmartTablesService } from './components/smartTables/smartTables.service';
+import { UploaderComponent } from './uploader/uploader.component'
+import { NgUploaderModule } from 'ngx-uploader';
+
 
 @NgModule({
   imports: [
@@ -24,6 +27,7 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
     NgaModule,
     routing,
     Ng2SmartTableModule,
+    NgUploaderModule
   ],
   declarations: [
     Tables,
@@ -35,6 +39,7 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
     ContextualTable,
     ResponsiveTable,
     SmartTables,
+    UploaderComponent,
   ],
   providers: [
     BasicTablesService,

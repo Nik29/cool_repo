@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 
 import { SmartTablesService } from './smartTables.service';
 import { LocalDataSource } from 'ng2-smart-table';
@@ -9,7 +9,7 @@ import 'style-loader!./smartTables.scss';
   selector: 'smart-tables',
   templateUrl: './smartTables.html',
 })
-export class SmartTables {
+export class SmartTables implements OnInit{
 
   query: string = '';
 
@@ -29,28 +29,20 @@ export class SmartTables {
       confirmDelete: true
     },
     columns: {
-      id: {
-        title: 'ID',
+      "Row ID" : {
+        title: 'ROW ID',
         type: 'number'
       },
-      firstName: {
-        title: 'First Name',
+      "Order ID": {
+        title: 'Order ID',
+        type: 'number'
+      },
+      "Order Date": {
+        title: 'Order Date',
         type: 'string'
       },
-      lastName: {
-        title: 'Last Name',
-        type: 'string'
-      },
-      username: {
-        title: 'Username',
-        type: 'string'
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string'
-      },
-      age: {
-        title: 'Age',
+      "Sales" :{
+        title: 'Sales',
         type: 'number'
       }
     }
@@ -59,9 +51,21 @@ export class SmartTables {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(protected service: SmartTablesService) {
-    this.service.getData().then((data) => {
-      this.source.load(data);
-    });
+
+  }
+
+  ngOnInit(){
+    this.service.getData().subscribe(
+        val=>{
+          val.forEach(item => {
+            console.log('Item:', item);
+            let JSONObj = { "Row ID ":item["Row ID"], "Order ID":item["Order ID"], "Order Date":item["Order Date"] , "Sales":item["Sales"] };
+            this.source.append(item);
+            
+});
+
+        }
+    );
   }
 
   onDeleteConfirm(event): void {

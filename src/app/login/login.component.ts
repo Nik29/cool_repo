@@ -3,6 +3,8 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
 import { moveIn , fallIn} from '../router.animations';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-//import {FirebaseService} from './services/firebase.service'
+import {FirebaseService} from './services/firebase.service';
 //import {FlashMessagesModule} from 'angular2-flash-messages'
 /*
  * Platform and Environment providers/directives/pipes
@@ -41,7 +41,6 @@ const firebaseAuthConfig = {
   method: AuthMethods.Popup
 };
 
-
 export type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,
@@ -74,7 +73,7 @@ export type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-  //  FirebaseService,
+    FirebaseService,
     AuthGuard
   ]
 })

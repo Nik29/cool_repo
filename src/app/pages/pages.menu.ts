@@ -191,6 +191,14 @@ export const PAGES_MENU = [
                 title: 'Smart Tables',
               }
             }
+          },
+          {
+            path: 'uploader',
+            data: {
+              menu: {
+                title: 'Upload Data',
+              }
+            }
           }
         ]
       },

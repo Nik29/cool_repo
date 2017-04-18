@@ -169,6 +169,7 @@ module.exports = function (options) {
         debug: true,
         options: {
           context: helpers.root('src'),
+
           output: {
             path: helpers.root('dist')
           },
@@ -219,9 +220,15 @@ module.exports = function (options) {
       crypto: 'empty',
       process: true,
       module: false,
+      fs: 'empty',
       clearImmediate: false,
       setImmediate: false
-    }
+    },
+    externals: [
+        {
+            './cptable': 'var cptable'
+        }
+    ]
 
   });
 };

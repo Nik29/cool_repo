@@ -1,6 +1,6 @@
 import {Component , OnInit} from '@angular/core';
 import {GlobalState} from '../../../global.state';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire} from 'angularfire2';
 import { Router } from '@angular/router';
 //import {FlashMessagesService} from 'angular2-flash-messages';
 import 'style-loader!./baPageTop.scss';
@@ -11,6 +11,7 @@ import 'style-loader!./baPageTop.scss';
 })
 export class BaPageTop implements OnInit {
   name: any;
+  photoUrl: any;
   public isScrolled:boolean = false;
   public isMenuCollapsed:boolean = false;
 
