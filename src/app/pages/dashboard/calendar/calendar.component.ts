@@ -32,9 +32,9 @@ export class Calendar {
           start: start,
           end: end
         };
-        jQuery(this._calendar).fullCalendar('renderEvent', eventData, true);
+        (<any>jQuery(this._calendar)).fullCalendar('renderEvent', eventData, true);
       }
-      jQuery(this._calendar).fullCalendar('unselect');
+      (<any>jQuery(this._calendar)).fullCalendar('unselect');
     }
   }
 }

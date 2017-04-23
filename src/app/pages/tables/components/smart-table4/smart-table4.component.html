@@ -1,0 +1,11 @@
+<div>
+  <input type="file" (change)="changeListener($event)" placeholder="Upload file..." /> 
+  <p>WARNING:Existing data will be deleted!</p>
+</div>
+<div class="widgets" >
+  <div class="row">
+    <ba-card title="User Details" baCardClass="with-scroll">
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+    </ba-card>
+  </div>
+</div>

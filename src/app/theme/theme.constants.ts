@@ -24,7 +24,7 @@ export class colorHelper {
   };
 
   static hexToRgbA = (hex, alpha) => {
-    let c;
+    let c:any;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
       c = hex.substring(1).split('');
       if (c.length == 3) {

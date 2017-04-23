@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {} from 'jasmine';
-import { LoginComponent } from './login.component';
+import { SmartTable2Component } from './smart-table2.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('SmartTable2Component', () => {
+  let component: SmartTable2Component;
+  let fixture: ComponentFixture<SmartTable2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ SmartTable2Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SmartTable2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

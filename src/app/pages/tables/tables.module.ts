@@ -14,10 +14,14 @@ import { BorderedTable } from './components/basicTables/components/borderedTable
 import { HoverTable } from './components/basicTables/components/hoverTable';
 import { CondensedTable } from './components/basicTables/components/condensedTable';
 import { ContextualTable } from './components/basicTables/components/contextualTable';
-import { SmartTables } from './components/smartTables/smartTables.component';
-import { SmartTablesService } from './components/smartTables/smartTables.service';
-import { UploaderComponent } from './uploader/uploader.component'
+//import { SmartTables } from './components/smartTables/smartTables.component';
+//import { SmartTablesService } from './components/smartTables/smartTables.service';
+//import { UploaderComponent } from './uploader/uploader.component'
 import { NgUploaderModule } from 'ngx-uploader';
+import { SmartTable2Component } from './components/smart-table2/smart-table2.component';
+import { SmartTable1Component } from './components/smart-table1/smart-table1.component';
+import { SmartTable3Component } from './components/smart-table3/smart-table3.component';
+import { SmartTable4Component } from './components/smart-table4/smart-table4.component';
 
 
 @NgModule({
@@ -38,12 +42,16 @@ import { NgUploaderModule } from 'ngx-uploader';
     StripedTable,
     ContextualTable,
     ResponsiveTable,
-    SmartTables,
-    UploaderComponent,
+    //SmartTables,
+    SmartTable2Component,
+    SmartTable1Component,
+    SmartTable3Component,
+    SmartTable4Component,
+    //UploaderComponent,
   ],
   providers: [
     BasicTablesService,
-    SmartTablesService,
+  //  SmartTablesService,
   ]
 })
 export class TablesModule {

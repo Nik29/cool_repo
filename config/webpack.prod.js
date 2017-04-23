@@ -272,7 +272,8 @@ module.exports = function (env) {
       process: false,
       module: false,
       clearImmediate: false,
-      setImmediate: false
+      setImmediate: false,
+    
     }
 
   });

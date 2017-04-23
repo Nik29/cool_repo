@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit {
 
   state: string = '';
   error: any;
-
+  email:any;
+  password:any;
     constructor(public af: AngularFire,private router: Router) {
 
     }

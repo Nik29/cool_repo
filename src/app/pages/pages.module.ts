@@ -7,8 +7,6 @@ import { NgaModule } from '../theme/nga.module';
 import { Pages } from './pages.component';
 
 
-
-
 @NgModule({
   imports: [CommonModule, NgaModule, routing],
   declarations: [Pages]

@@ -222,8 +222,10 @@ module.exports = function (options) {
       module: false,
       fs: 'empty',
       clearImmediate: false,
-      setImmediate: false
+      setImmediate: false,
+      child_process : 'empty'
     },
+
     externals: [
         {
             './cptable': 'var cptable'
