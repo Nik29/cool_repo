@@ -1,6 +1,5 @@
 import { Component , OnInit} from '@angular/core';
 import * as firebase from 'firebase';
-import { SmartTablesService } from './smartTables.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { AngularFire, FirebaseObjectObservable , FirebaseListObservable} from 'angularfire2';
 import csv from 'csvtojson';

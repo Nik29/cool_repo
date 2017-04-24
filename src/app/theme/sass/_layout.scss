@@ -160,11 +160,11 @@ a {
 }
 
 .icon-up {
-  //@include bg-nr('arrow-green-up.svg');
+  @include bg-nr('arrow-green-up.svg');
 }
 
 .icon-down {
-  //@include bg-nr('arrow-red-down.svg');
+  @include bg-nr('arrow-red-down.svg');
 }
 
 .disable-text-selection {

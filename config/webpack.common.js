@@ -58,8 +58,8 @@ module.exports = function (options) {
 
       'polyfills': './src/polyfills.browser.ts',
       'vendor': './src/vendor.browser.ts',
-      //'main':      AOT ? './src/main.browser.aot.ts' : './src/main.browser.ts'
-      'main': './src/main.ts'
+      'main':      AOT ? './src/main.browser.aot.ts' : './src/main.browser.ts'
+      //'main': './src/main.ts'
     },
 
     /*
@@ -394,8 +394,8 @@ module.exports = function (options) {
       module: false,
       clearImmediate: false,
       setImmediate: false,
-      child_process:"empty" 
-
+      child_process: 'empty',
+      fs:"empty"
     }
 
   };

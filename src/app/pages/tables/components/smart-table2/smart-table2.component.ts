@@ -1,13 +1,12 @@
 import { Component , OnInit} from '@angular/core';
 import * as firebase from 'firebase';
-import { SmartTablesService } from './smartTables.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { AngularFire, FirebaseObjectObservable , FirebaseListObservable} from 'angularfire2';
 import csv from 'csvtojson';
 import 'style-loader!../smartTables/smartTables.scss';
 
 @Component({
-  selector: 'app-smart-table2',
+  selector: 'smart-table2',
   templateUrl: './smart-table2.component.html'
 //  styleUrls: ['./smart-table2.component.css']
 })
