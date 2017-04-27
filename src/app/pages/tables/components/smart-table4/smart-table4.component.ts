@@ -2,7 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import { LocalDataSource } from 'ng2-smart-table';
 import { AngularFire, FirebaseObjectObservable , FirebaseListObservable} from 'angularfire2';
-import csv from 'csvtojson';
+//import csv from 'csvtojson';
 import 'style-loader!../smartTables/smartTables.scss';
 
 @Component({
@@ -161,7 +161,7 @@ export class SmartTable4Component implements OnInit {
       window.alert("database updated using json file");
 
     }
-    else if(file.type=="text/csv"){
+    else if(file.type.includes("csv") || file.type.includes('excel')){
       myReader.readAsText(file);
       myReader.onload = function(z){
         let txxt = myReader.result;
@@ -170,7 +170,7 @@ export class SmartTable4Component implements OnInit {
          let a:any,b:any,c:any,d:any,e:any,f:any,g:any,h:any;
          let ct = 0;
 
-         //const csv=require('csvtojson')
+         const csv=require('csvtojson')
 csv()
 .fromString(txxt)
 .on('json',(jsonObj)=>{ // this func will be called 3 times

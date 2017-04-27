@@ -17,9 +17,6 @@ const routes: Routes = [
       { path: 'owners', component: SmartTable3Component },
       { path: 'drivers', component: SmartTable4Component }
 
-
-
-
       //{ path: 'uploader', component: UploaderComponent }
     ]
   }

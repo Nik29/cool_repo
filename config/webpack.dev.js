@@ -16,7 +16,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4200;
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -169,7 +169,6 @@ module.exports = function (options) {
         debug: true,
         options: {
           context: helpers.root('src'),
-
           output: {
             path: helpers.root('dist')
           },
@@ -220,17 +219,9 @@ module.exports = function (options) {
       crypto: 'empty',
       process: true,
       module: false,
-      fs: 'empty',
       clearImmediate: false,
-      setImmediate: false,
-      child_process : 'empty'
-    },
-
-    externals: [
-        {
-            './cptable': 'var cptable'
-        }
-    ]
+      setImmediate: false
+    }
 
   });
 };

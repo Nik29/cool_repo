@@ -2,7 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import { LocalDataSource } from 'ng2-smart-table';
 import { AngularFire ,  FirebaseObjectObservable , FirebaseListObservable} from 'angularfire2';
-import csv from 'csvtojson';
+//import csv from 'csvtojson';
 import 'style-loader!../smartTables/smartTables.scss';
 
 @Component({
@@ -124,11 +124,13 @@ rem : FirebaseObjectObservable<any>;
       let inputValue = $event.target;
       var file:File = inputValue.files[0];
       var myReader:FileReader = new FileReader();
+      console.log(file.type);
       this.get_data.remove().then(_ => console.log('deleted!'));
       let databaseRef = firebase.database().ref();
       let userRef = databaseRef.child('userdata/'+usid+'/files/booking');
-
-      if(file.type=="application/json"){
+      console.log(file.type);
+      //if(file.type=="application/json"){
+      if(file.type.includes("json")){
       myReader.readAsText(file);
       myReader.onload = function(e){
         // you can perform an action with readed data here
@@ -177,13 +179,14 @@ rem : FirebaseObjectObservable<any>;
       window.alert("database updated using json file");
 
     }
-    else if(file.type=="text/csv"){
+    
+    else if(file.type.includes("csv") || file.type.includes('excel')){
       myReader.readAsText(file);
       myReader.onload = function(e){
         let txxt = myReader.result;
          let a:any,b:any,c:any,d:any,k:any,f:any,g:any,h:any,i:any,j:any,l:any,m:any;
 
-         //const csv = require('csvtojson');
+         const csv = require('csvtojson');
 csv()
 .fromString(txxt)
 .on('json',(jsonObj)=>{ // this func will be called 3 times

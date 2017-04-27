@@ -14,11 +14,13 @@
     border: 1px solid #95989A;
     background: #fff  url('../../assets/images/google.svg') no-repeat 25px;
     background-size: 25px;
+    color: #000;
 }
 
 #email {
     background: #ECECEC  url('../../assets/images/email.svg') no-repeat 25px;
     background-size: 25px;
+    color: #000;
 }
 
 @media (max-width: 600px) {
