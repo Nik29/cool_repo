@@ -125,7 +125,9 @@ export class SmartTable2Component implements OnInit {
       let databaseRef = firebase.database().ref();
       let userRef = databaseRef.child('userdata/'+usid+'/files/vehicles');
 
-      if(file.type=="application/json"){
+      let ext = file.name.substr(file.name.lastIndexOf('.')+1)
+      console.log(ext);
+      if(ext=="json"){
       myReader.readAsText(file);
       myReader.onload = function(z){
         // you can perform an action with readed data here
@@ -173,7 +175,7 @@ export class SmartTable2Component implements OnInit {
         window.location.reload();
         window.alert("database updated using json file");
     }
-    else if(file.type.includes("csv") || file.type.includes('excel')){
+      else if(ext=="csv"){
       myReader.readAsText(file);
       myReader.onload = function(z){
         let txxt = myReader.result;

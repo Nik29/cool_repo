@@ -5,7 +5,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Dashboard } from './dashboard.component';
 import { routing }       from './dashboard.routing';
-
+import { LoadDataService } from './trafficChart/loadData.service';
 import { PopularApp } from './popularApp';
 import { PieChart } from './pieChart';
 import { TrafficChart } from './trafficChart';
@@ -20,6 +20,7 @@ import { LineChartService } from './lineChart/lineChart.service';
 import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
+
 import { UsersMapService } from './usersMap/usersMap.service';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     Dashboard
   ],
   providers: [
+    LoadDataService,
     CalendarService,
     FeedService,
     LineChartService,
@@ -51,5 +53,5 @@ import { UsersMapService } from './usersMap/usersMap.service';
   ]
 })
 export class DashboardModule {
-  
+
 }

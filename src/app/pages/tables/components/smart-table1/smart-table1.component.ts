@@ -13,6 +13,7 @@ import 'style-loader!../smartTables/smartTables.scss';
 export class SmartTable1Component implements OnInit {
   query: string = '';
   uid : any;
+
   settings = {
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',
@@ -106,6 +107,7 @@ rem : FirebaseObjectObservable<any>;
             this.source.append(JSONObj);
 });
 
+
         }
     );
   }
@@ -129,8 +131,9 @@ rem : FirebaseObjectObservable<any>;
       let databaseRef = firebase.database().ref();
       let userRef = databaseRef.child('userdata/'+usid+'/files/booking');
       console.log(file.type);
-      //if(file.type=="application/json"){
-      if(file.type.includes("json")){
+      let ext = file.name.substr(file.name.lastIndexOf('.')+1)
+      console.log(ext);
+      if(ext=="json"){
       myReader.readAsText(file);
       myReader.onload = function(e){
         // you can perform an action with readed data here
@@ -179,8 +182,8 @@ rem : FirebaseObjectObservable<any>;
       window.alert("database updated using json file");
 
     }
-    
-    else if(file.type.includes("csv") || file.type.includes('excel')){
+
+    else if(ext=="csv"){
       myReader.readAsText(file);
       myReader.onload = function(e){
         let txxt = myReader.result;
