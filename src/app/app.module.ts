@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EmailComponent } from './email/email.component';
 
+
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -68,6 +69,7 @@ export type StoreType = {
     PagesModule,
     AngularFireModule.initializeApp(firebaseConfig , firebaseAuthConfig),
     routes,
+    
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

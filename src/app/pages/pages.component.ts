@@ -1,12 +1,12 @@
 import { Component , OnInit } from '@angular/core';
 import { Routes } from '@angular/router';
 
+
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
-//import { moveIn, fallIn, moveInLeft } from '../router.animations';
 
 @Component({
   selector: 'pages',
@@ -15,11 +15,11 @@ import { Router } from '@angular/router';
   //host: {'[@moveIn]': ''}
 
 })
-export class Pages {
+export class Pages implements OnInit{
   name: any;
   state: string = '';
 
-  constructor(public af: AngularFire,private router: Router,private _menuService: BaMenuService,) {
+  constructor(public af: AngularFire,private router: Router,private _menuService: BaMenuService ) {
     this.af.auth.subscribe(auth => {
       if(auth) {
         this.name = auth;
@@ -29,11 +29,15 @@ export class Pages {
 
   logout() {
      this.af.auth.logout();
-     console.log('logged out');
+     
      this.router.navigateByUrl('../login');
+   }
+   ngOnDestroy(){
+
    }
 
   ngOnInit() {
     this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+
   }
 }

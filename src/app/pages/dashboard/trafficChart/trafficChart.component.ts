@@ -1,9 +1,7 @@
 import {Component , OnInit} from '@angular/core';
-
 import {TrafficChartService} from './trafficChart.service';
-import {LoadDataService} from './loadData.service';
+import { RealTimeService } from '../../real-time.service'
 import * as Chart from 'chart.js';
-import { AngularFire , FirebaseListObservable} from 'angularfire2';
 import 'style-loader!./trafficChart.scss';
 
 @Component({
@@ -17,52 +15,49 @@ export class TrafficChart implements OnInit{
 
   public doughnutData: Array<Object>;
   uid : any;
-  public tot : any;
+  tot : any;
   trial:any;
-  get_data :FirebaseListObservable<any[]>;
+  get_data :Array<Object>;
   temp_data : any;
-  cf : number;
-  constructor(public af: AngularFire ,private loadDataService:LoadDataService , private trafficChartService:TrafficChartService) {
-    this.doughnutData = trafficChartService.getData();
-    this.af.auth.subscribe(auth => {
-      if(auth) {
-        this.uid = auth.uid;
-      }
-    });
-    this.cf = this.loadDataService.flag;
+  myFlag :number;
 
+
+  constructor(private realTimeService:RealTimeService , private trafficChartService:TrafficChartService) {
+    this.doughnutData = trafficChartService.getData();
+    this.myFlag = 0;
 
   }
   ngOnChanges(){
 
   }
   ngDoCheck(){
-    if (this.loadDataService.flag==1 && this.loadDataService.bigFlag==0 ){
-      this.loadDataService.bigFlag = 1;
+    if (this.realTimeService.flag==1 && this.myFlag==1){
+      this.realTimeService.flag = 0;
       this.myFunction();
     }
 
   }
-  ngOnDestroy(){
-    clearInterval(this.loadDataService.st);
-  }
 
   ngOnInit()
   {
-this.loadDataService.subscriber();
+
  }
    ngAfterViewInit(){
+
+     this.myFlag = 1;
+     
 
   }
 
 
   myFunction() {
-    this.get_data = this.af.database.list('userdata/'+this.uid+'/realTimeData');
+
     let doughData = {"open":0,"assigned":0,"picked":0,"dropped":0,"cancelled":0};
-    this.get_data.subscribe(
-        val=>{
+    this.get_data = this.realTimeService.full_data;
+
           this.tot = 0;
-          val.forEach(item => {
+
+          this.get_data.forEach(item => {
           this.tot+=1;
           let l = item["state"];
           switch(l){
@@ -85,19 +80,16 @@ this.loadDataService.subscriber();
 
         }
         );
-      console.log(doughData);
+
       let ct=0
       for(let key in doughData){
       this.doughnutData[ct]["value"]=doughData[key];
       this.doughnutData[ct]["percentage"]=Math.round(doughData[key]*10000/this.tot)/100;
       ct+=1;
     }
-    console.log(this.doughnutData);
+
     this._loadDoughnutCharts();
 
-  }
-
-  );
   }
 
   private _loadDoughnutCharts() {

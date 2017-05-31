@@ -1,3 +1,25 @@
-<ba-card title="Google Maps">
-  <div class="google-maps"></div>
-</ba-card>
+<div class="row">
+      <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12"
+               baCardClass="medium-card">
+              <div class="google-maps"></div>
+      </ba-card>
+      <div class="col-xlg-6 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12">
+        <ba-card title="Feed"
+                 baCardClass="medium-card with-scroll feed-panel">
+                 <div class="feed-messages-container">
+                   <div class="feed-message" *ngFor="let message of feed" (click)="displayRoute(message.id)">
+                     <div class="text-block text-message" *ngIf="message.drop.address!='-'">
+                       <div class="message-header">
+                         <span class="author">{{ message.name }}:{{ message.mobile}}</span>
+                       </div>
+                       <div class="message-content line-clamp" [ngClass]="{'line-clamp-2' : !message.expanded}">
+                         <span *ngIf="message.preview"></span>Pickup:{{ message.pickup.address }}<br />
+                         <span *ngIf="message.drop.address!='-'">Drop:{{ message.drop.address }}</span>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+
+        </ba-card>
+  </div>
+</div>

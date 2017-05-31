@@ -12,6 +12,7 @@ export const routes: Routes = [
       //{ path: 'treeview', component: TreeViewComponent }
     ]
   }
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
