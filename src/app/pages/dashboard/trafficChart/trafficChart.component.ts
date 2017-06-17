@@ -1,6 +1,6 @@
 import {Component , OnInit} from '@angular/core';
 import {TrafficChartService} from './trafficChart.service';
-import { RealTimeService } from '../../real-time.service'
+import { RealTimeService } from '../../real-time.service';
 import * as Chart from 'chart.js';
 import 'style-loader!./trafficChart.scss';
 
@@ -45,7 +45,7 @@ export class TrafficChart implements OnInit{
    ngAfterViewInit(){
 
      this.myFlag = 1;
-     
+
 
   }
 

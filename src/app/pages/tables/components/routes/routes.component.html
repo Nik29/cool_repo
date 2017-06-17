@@ -1,0 +1,30 @@
+<div>
+  <input type="file" (change)="changeListener($event)" placeholder="Upload file..." /><p>WARNING:Existing data will be deleted!</p>
+</div>
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <!--<div class="button-wrapper">
+        <button type="button" class="btn btn-primary" (click)="addServer()">Add Driver</button>
+      </div>-->
+    <tr class="black-muted-bg">
+      <th>driver_id</th>
+      <th>Route_type</th>
+      <th>Start_time</th>
+      <th>Stop_time</th>
+      <th>route_info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of routeTableData" class="no-top-border">
+      <!--<td><img src="{{ ( item.image | baAppPicture ) }}" width="20" height="20"></td>-->
+      <td ngClass="nowrap">{{item.browser}}</td>
+      <td>{{item.driver_id}}</td>
+      <td>{{item.route_type}}</td>
+      <td>{{item.start_time}}</td>
+      <td>{{item.stop_time}}</td>
+      <td><img src="assets/images/gmap.png" width="20" height="20"></td>
+    </tr>
+  </tbody>
+  </table>
+</div>

@@ -1,12 +1,12 @@
 <link media="all" type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation-flex.min.css">
 <div class="form-container">
-  <img src="assets/images/lock.svg" id="lock">
+  <img src="assets/images/lock.png" id="lock">
 
     <span class="error" *ngIf="error" [@fallIn]='state' >{{ error }}</span>
 
-  <button (click)="loginFb()" id="fb">Login With Facebook</button><br>
-  <button (click)="loginGoogle()" id="google">Login With Google</button><br>
-  <button routerLink="/email" id="email">Email</button>
 
-  <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+  <button (click)="loginGoogle()" id="google">Login With Google</button><br>
+<!--  <button routerLink="/email" id="email">Email</button>
+
+  <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>-->
 </div>

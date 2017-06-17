@@ -1,10 +1,11 @@
 import { NgModule, ApplicationRef } from '@angular/core';
+//import {GooglePlaceModule} from "angular2-google-place";
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule, AuthMethods } from 'angularfire2';
 import {FirebaseService} from './services/firebase.service';
 //import {FlashMessagesModule} from 'angular2-flash-messages'
 /*
@@ -23,7 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EmailComponent } from './email/email.component';
 
-
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -31,14 +31,16 @@ const APP_PROVIDERS = [
 ];
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyD8DXdT73GIVEolltq6K-wsF34A7fCnrIc",
-    authDomain: "fir-auth-9e0d9.firebaseapp.com",
-    databaseURL: "https://fir-auth-9e0d9.firebaseio.com",
-    storageBucket: "fir-auth-9e0d9.appspot.com",
-    messagingSenderId: "586460365919"
+    apiKey: "AIzaSyAo06YbouNNY2AS6JxCfg2DphT8WodqiAw",
+    authDomain: "drivool-eb297.firebaseapp.com",
+    databaseURL: "https://drivool-eb297.firebaseio.com",
+    projectId: "drivool-eb297",
+    storageBucket: "drivool-eb297.appspot.com",
+    messagingSenderId: "236549372153"
   };
+
 const firebaseAuthConfig = {
-  provider: AuthProviders.Google,
+  providerId:'google.com',
   method: AuthMethods.Popup
 };
 
@@ -69,14 +71,16 @@ export type StoreType = {
     PagesModule,
     AngularFireModule.initializeApp(firebaseConfig , firebaseAuthConfig),
     routes,
-    
+    //GooglePlaceModule
+
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
     FirebaseService,
-    AuthGuard
+    AuthGuard,
+
   ]
 })
 

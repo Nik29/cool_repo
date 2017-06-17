@@ -13,10 +13,10 @@ export class GoogleMaps implements OnInit  {
   baseUrl:any;
   ide : any;
   constructor(private _elementRef:ElementRef,private realTimeService:RealTimeService) {
-      GoogleMapsLoader.KEY = 'AIzaSyAzXZYCOJgDf1goOGBmtS21SYNXymq40xk';
+      
       this.myflag = 0;
-      this.baseUrl = 'https://aus-cbd-data-01.appspot.com/book/?service=gbi&gapn=aus-jumpin-01&id=';
-      GoogleMapsLoader.KEY = 'AIzaSyAzXZYCOJgDf1goOGBmtS21SYNXymq40xk';
+      this.baseUrl = 'https://'+realTimeService.server+'.appspot.com/book/?service=gbi&gapn='+realTimeService.gapn+'&id=';
+      GoogleMapsLoader.KEY = 'AIzaSyCpJDw6_i9VLW3piLDqQYObxddeCYmrZ88';
       this.ide = 0;
   }
   ngOnInit() {
@@ -34,9 +34,7 @@ export class GoogleMaps implements OnInit  {
       });
     });
   }
-  expandMessage (message){
-    message.expanded = !message.expanded;
-  }
+
   ngOnChanges(){
   }
   ngDoCheck(){
@@ -94,7 +92,7 @@ initMap(txxt,source,dest)
   GoogleMapsLoader.load((google) => {
      var map = new google.maps.Map(el, {
       center: new google.maps.LatLng(source.lat,source.lng),
-      zoom: 10,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
       });
       var flightPlanCoordinates = txxt;

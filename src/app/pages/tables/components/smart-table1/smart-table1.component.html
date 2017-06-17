@@ -1,10 +1,33 @@
 <div>
-  <input type="file" (change)="changeListener($event)" placeholder="Upload file..." /><p>WARNING:Existing data will be deleted!</p>
+  <input type="file" class="btn btn-primary" style="display:inline ; font-size: 100%; " (change)="changeListener($event)" placeholder="Upload file..." />
+  <div class="divider"></div>
+  <button type="button" class="btn btn-primary" style="font-size: 100%;"  (click)="reset()">____Reset Data____</button><br/>
+  <div class="button-wrapper">
+    <button type="button" class="btn btn-danger" style="font-size: 100%" disabled="disabled">WARNING:Existing data will be deleted on clicking any of the above!</button>
+  </div>
+</div>
+<br />
+<div class="divider"></div>
+<button type="button" id="bnh" class="btn btn-primary" style=" font-size: 100%; " (click)="myFunction()">Book Now</button>
+<div id="myDIV" style="display:none">
+<ba-card title="New Booking" baCardClass="xmedium-card">
+<form name="myForm" method="POST" (ngSubmit)="createNew()">
+  <label>Name : </label><input placeholder="Name" type="text" name="name" [(ngModel)]="name" required /><br /><br />
+  <label>Email : </label><input placeholder="Email" type="email" name = "email" [(ngModel)]="email" required /><br /><br />
+  <label>Phone no. : </label><input placeholder="Phone number" type="text" name = "pno" [(ngModel)]="pno" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"required /><br /><br />
+  <label>Pickup Date : </label><input placeholder="Pickup Date" type="date" name = "pdate" [(ngModel)]="pdate" required /><br /><br />
+  <label>Pickup Time : </label><input placeholder="Pickup Time" type="time" name = "ptime" [(ngModel)]="ptime"  /><br /><br />
+  <label>Pickup location : </label><input placeholder="Pickup Location" type="text"  name = "ploc" [(ngModel)]="ploc" id="input1" /><br /><br />
+  <label>Drop Location : </label><input placeholder="Drop Location" type="text" name = "dloc" [(ngModel)]="dloc" id="input2"/><br /><br /><br /><br />
+  <input class="btn btn-primary"   type="submit" value="Book Now!"/>
+  <input class="btn btn-primary" type="reset" />
+</form>
+</ba-card>
 </div>
 <div class="widgets" >
   <div class="row">
     <ba-card title="User Details" baCardClass="with-scroll">
-      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" ></ng2-smart-table>
+      <ng2-smart-table [settings]="settings" [source]="source"   (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
     </ba-card>
   </div>
 </div>

@@ -1,11 +1,13 @@
-import { Injectable , OnInit} from '@angular/core';
+import { Injectable} from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFire ,  FirebaseListObservable} from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FeedchartService } from './dashboard/feedchart.service';
+import { CalendarService } from './dashboard/calendar/calendar.service';
+
 
 @Injectable()
-export class RealTimeService implements OnInit{
+export class RealTimeService{
   uid : any;
   get_data :FirebaseListObservable<any[]>;
   flag:number;
@@ -17,40 +19,78 @@ export class RealTimeService implements OnInit{
   ref: any;
   st:any;
   subs : any;
-  constructor(public af: AngularFire,db: AngularFireDatabase , private feedChartService : FeedchartService) {
+  gref : any;
+  gapn : string;
+  server  :string;
+  constructor(public af: AngularFire,public db: AngularFireDatabase , private feedChartService : FeedchartService,private _calendarService:CalendarService) {
     this.flag = 0;
     this.bigFlag = 0;
     this.holder = '';
     this.hashMap = {};
-    this.baseUrl = 'https://aus-cbd-data-01.appspot.com/book/?service=gob&gapn=aus-jumpin-01';
-    this.af.auth.subscribe(auth => {
-      if(auth) {
-        this.uid = auth.uid;
-        //this.get_data = this.af.database.list('userdata/'+this.uid+'/realTimeData');
-        this.ref =  firebase.database().ref('userdata/'+this.uid+'/realTimeData');
-        this.get_data = db.list('userdata/'+this.uid+'/realTimeData');
-      }
-    });
+    this.baseUrl = '';
+
    }
    ngOnInit(){
+     let that = this;
+     window.onbeforeunload = function(event)
+    {
+        if(that.subs){
+          that.subs.unsubscribe();
+        }
+    };
 
    }
    ngOnDestroy(){
-     this.subs.unsubscribe();
+
    }
    hasher(){
      let that = this;
+     this.af.auth.subscribe(auth => {
+       if(auth) {
+
+         that.uid = auth.auth.email.replace(/[^A-Z0-9]/ig, "_");
+         //this.get_data = this.af.database.list('userdata/'+this.uid+'/realTimeData');
+         let alias : string;
+         that.gref = firebase.database().ref('userControl/'+that.uid);
+         that.gref.once("value")
+          .then(function(snapshot){
+            alias = snapshot.val().sgk;
+
+          if(alias=="-"){
+            alert("No Server assigned!");
+          }
+          else{
+
+          that.gref = firebase.database().ref('servers/'+alias);
+
+         that.ref =  firebase.database().ref('userdata/'+that.uid+'/realTimeData');
+         that.get_data = that.db.list('userdata/'+that.uid+'/realTimeData');
+         that.gref.once("value")
+            .then(function(snapshot) {
+              that.gapn = snapshot.val().gapn;
+              that.server = snapshot.val().server;
+              that.feedChartService.baseUrl='https://'+that.server+'.appspot.com/book/?service=gbi&gapn='+that.gapn+'&id=';
+              that.baseUrl='https://'+that.server+'.appspot.com/book/?service=gob&gapn='+that.gapn;
+
+
+     if(that.gapn=='' || that.server==''){
+       console.log("No gapn assigned");
+     }
+     else{
+
+
      that.ref.once("value")
         .then(function(snapshot) {
           var a = snapshot.exists();
 
           if(a== true){
+
             let jsonObj = {};
               that.get_data.forEach(item=>{
                 that.hashMap[item["id"]]=JSON.parse(JSON.stringify(item));
               });
           }
-          that.subscriber();
+          that.subscriber(that);
         });
       that.subs =   that.get_data.subscribe(val=>{
           that.full_data = [];
@@ -59,16 +99,33 @@ export class RealTimeService implements OnInit{
               that.full_data.push(item);
             })
             that.feedChartService.retrieve(that.full_data);
+            that._calendarService.getData(that.full_data);
             that.flag = 1;
             that.bigFlag = 1;
   })
 }
+});
+}
+});
 
-   subscriber(){
-     let t = this;
+}
+
+});
+}
+
+
+
+   subscriber(them){
+     let t = them;
+     if(t.gapn=="" || t.server==''){
+
+     }
+     else{
      this.st = setInterval(function(){t.goCheck(t)},10000);
    }
+   }
    goCheck(t){
+
      t.loadJSON(t.callback,t);
    }
    loadJSON(callback,t) {
@@ -109,7 +166,14 @@ export class RealTimeService implements OnInit{
        jsonObj["drop"]={};
        jsonObj["drop"]["address"]="-";
        jsonObj["drop"]["lng"]="-";
-       jsonObj["drop"]["lat"]="-"
+       jsonObj["drop"]["lat"]="-";
+       jsonObj["fare"]={};
+       jsonObj["fare"]["min"]="-";
+       jsonObj["fare"]["max"]="-";
+       jsonObj["distance"]="-";
+
+     }
+     if(!jsonObj.fare.hasOwnProperty("min")){
        jsonObj["fare"]={};
        jsonObj["fare"]["min"]="-";
        jsonObj["fare"]["max"]="-";
@@ -143,8 +207,8 @@ export class RealTimeService implements OnInit{
 
      else if(!that.hashMap.hasOwnProperty(jsonObj["id"])){
      that.hashMap[jsonObj["id"]]=JSON.parse(JSON.stringify(jsonObj));
-     let newPostRef =that.ref.push();
-     let ki = newPostRef.key;
+     let newPostRef =that.ref.child(jsonObj["id"]);
+
      newPostRef.set({
          id : jsonObj["id"],
          distance : jsonObj["distance"],
@@ -156,7 +220,7 @@ export class RealTimeService implements OnInit{
          mobile : jsonObj["mobile"],
          mode : jsonObj["mode"],
          pickuptime : jsonObj["pickuptime"],
-         key : ki
+         key : jsonObj["id"]
        });
        that.hashMap[jsonObj["id"]]["key"]=newPostRef.key;
        newHash[jsonObj["id"]]["key"]=newPostRef.key;

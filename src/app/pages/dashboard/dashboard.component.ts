@@ -14,10 +14,16 @@ export class Dashboard implements OnInit{
   }
   ngOnInit(){
     this.realTimeService.hasher();
+    
+    let that = this;
+    $(window).unload(function() {
+    clearInterval(that.realTimeService.st);
+  });
   }
   ngOnDestroy(){
-    clearInterval(this.realTimeService.st);
+  clearInterval(this.realTimeService.st);
   }
+
 
   goAway(){
      this.router.navigateByUrl('pages/maps/googlemaps');

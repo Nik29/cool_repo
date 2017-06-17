@@ -13,31 +13,28 @@
   <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
            title="Current Status" baCardClass="medium-card">
            <app-riderider-map ></app-riderider-map>
-           <button style="color:blue;" (click)="goAway()">Go</button>
+           <div class="button-wrapper">
+  <button type="button" class="btn btn-primary" (click)="goAway()">Go to feed</button>
+</div>
   </ba-card>
 </div>
 
 <div class="row">
-  <div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-xs-12">
-    <div class="row">
-      <ba-card class="col-xlg-3 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+      <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
                 title="Revenue" baCardClass="medium-card">
                <line-chart></line-chart>
       </ba-card>
-    </div>
-  </div>
 
-  <ba-card class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="Calendar"
+
+  <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12" title="Calendar"
            baCardClass="xmedium-card feed-comply-panel with-scroll calendar-panel">
     <calendar></calendar>
   </ba-card>
-
-
 </div>
 
-<div class="row shift-up">
+<!--<div class="row shift-up">
   <ba-card class="col-xlg-3 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="To Do List"
            baCardClass="xmedium-card feed-comply-panel with-scroll todo-panel">
     <todo></todo>
   </ba-card>
-</div>
+</div>-->

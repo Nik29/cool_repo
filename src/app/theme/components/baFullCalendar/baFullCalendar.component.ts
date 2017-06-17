@@ -7,8 +7,9 @@ import 'style-loader!./baFullCalendar.scss';
 @Component({
   selector: 'ba-full-calendar',
   templateUrl: './baFullCalendar.html',
+
 })
-export class BaFullCalendar {
+export class BaFullCalendar{
 
   @Input() baFullCalendarConfiguration:Object;
   @Input() baFullCalendarClass:string;
@@ -16,8 +17,11 @@ export class BaFullCalendar {
 
   @ViewChild('baFullCalendar') public _selector:ElementRef;
 
+
+
   ngAfterViewInit() {
     let calendar = (<any>jQuery(this._selector.nativeElement)).fullCalendar(this.baFullCalendarConfiguration);
     this.onCalendarReady.emit(calendar);
+  
   }
-}
+  }

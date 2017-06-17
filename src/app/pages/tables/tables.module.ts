@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -22,7 +22,9 @@ import { SmartTable2Component } from './components/smart-table2/smart-table2.com
 import { SmartTable1Component } from './components/smart-table1/smart-table1.component';
 import { SmartTable3Component } from './components/smart-table3/smart-table3.component';
 import { SmartTable4Component } from './components/smart-table4/smart-table4.component';
-
+import { RoutesComponent } from './components/routes/routes.component';
+//import {GooglePlaceModule} from "angular2-google-place";
+import { AgmCoreModule } from "angular2-google-maps/core";
 
 @NgModule({
   imports: [
@@ -31,7 +33,12 @@ import { SmartTable4Component } from './components/smart-table4/smart-table4.com
     NgaModule,
     routing,
     Ng2SmartTableModule,
-    NgUploaderModule
+    NgUploaderModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCpJDw6_i9VLW3piLDqQYObxddeCYmrZ88",
+      libraries: ["places"]
+    }),
+    ReactiveFormsModule
   ],
   declarations: [
     Tables,
@@ -47,6 +54,8 @@ import { SmartTable4Component } from './components/smart-table4/smart-table4.com
     SmartTable1Component,
     SmartTable3Component,
     SmartTable4Component,
+    RoutesComponent,
+
     //UploaderComponent,
   ],
   providers: [

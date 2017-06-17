@@ -1,0 +1,26 @@
+.divider{
+    width:400px;
+    display:inline-block;
+}
+.modal-title{
+  color: black;
+
+}
+input{
+  font-family: sans-serif;
+  text-transform: bold ;
+  font-size: inherit;
+  color: black;
+  display: inline-block;
+  width: 280px;
+  padding: .4em;
+}
+label{
+  display: inline-block;
+  font-family: sans-serif;
+  text-transform: bold ;
+  background-color: transparent;
+  font-size: inherit;
+  color: blue;
+  width: 280px;
+}

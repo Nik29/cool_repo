@@ -395,7 +395,11 @@ module.exports = function (options) {
       clearImmediate: false,
       setImmediate: false,
       child_process:'empty',
-      fs:'empty'
+      fs:'empty',
+      tls: 'empty',
+      dns: 'mock',
+      net: 'mock'
+
     }
 
   };

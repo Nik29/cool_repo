@@ -1,0 +1,44 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <div class="button-wrapper">
+        <button type="button" class="btn btn-primary" (click)="addUser()">Add User</button>
+      </div>
+    <tr class="black-muted-bg">
+      <th>Username</th>
+      <th>Email</th>
+      <th>Server and Gapn key</th>
+      <th class="align-right">Status</th>
+      <th class="table-arr"></th>
+      <!--<th class="align-right">%</th>
+      <th class="table-arr"></th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of metricsTableData" class="no-top-border">
+      <!--<td><img src="{{ ( item.image | baAppPicture ) }}" width="20" height="20"></td>-->
+      <!--<td ngClass="nowrap">{{item.browser}}</td>-->
+      <td>{{item.name}}</td>
+      <td>{{item.email}}</td>
+        <td ALIGN="left">
+       <select class="sgk" (change)="onAliasClick($event.target.value,item.key)" data-ng-model="item.sgk">
+            <option class = "opt" *ngFor="let c of servTableData" [ngValue]="c" [selected]="c == item.sgk">
+              {{c}}
+            </option>
+       </select>
+
+    </td>
+
+      <!--<td contenteditable='true' class="align-right" (keyup.enter)="onStatusClick($event, item.key)">{{item.status}}</td>-->
+      <td ALIGN="right">
+        <select class="status" (change)="onStatusClick($event.target.value,item.key)" data-ng-model="item.status">
+             <option class = "opt" *ngFor="let cp of statusData" [ngValue]="cp" [selected]="cp == item.status">
+               {{cp}}
+             </option>
+        </select>
+      </td>
+      <td class="table-arr"><i [ngClass]="{'icon-up': item.stat, 'icon-down': !item.stat }"></i></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

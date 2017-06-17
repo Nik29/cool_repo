@@ -1,9 +1,9 @@
 <div class="row">
-      <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12"
-               baCardClass="medium-card">
+      <ba-card class="col-xlg-9 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12"
+               baCardClass="xmedium-card">
               <div class="google-maps"></div>
       </ba-card>
-      <div class="col-xlg-6 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12">
+      <div class="col-xlg-3 col-xl-6 col-lg-6 col-md-7 col-sm-12 col-xs-12">
         <ba-card title="Feed"
                  baCardClass="medium-card with-scroll feed-panel">
                  <div class="feed-messages-container">
@@ -12,7 +12,7 @@
                        <div class="message-header">
                          <span class="author">{{ message.name }}:{{ message.mobile}}</span>
                        </div>
-                       <div class="message-content line-clamp" [ngClass]="{'line-clamp-2' : !message.expanded}">
+                       <div class="message-content line-clamp" [ngClass]="{'line-clamp-2' : true}">
                          <span *ngIf="message.preview"></span>Pickup:{{ message.pickup.address }}<br />
                          <span *ngIf="message.drop.address!='-'">Drop:{{ message.drop.address }}</span>
                        </div>

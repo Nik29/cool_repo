@@ -14,7 +14,7 @@ export class RideriderMapComponent implements OnInit {
    viewFlag:number;
   constructor(private _elementRef:ElementRef,private feedChartService : FeedchartService) {
     this.baseUrl = 'https://aus-cbd-data-01.appspot.com/book/?service=gbi&gapn=aus-jumpin-01&id=';
-      GoogleMapsLoader.KEY = 'AIzaSyAzXZYCOJgDf1goOGBmtS21SYNXymq40xk';
+      GoogleMapsLoader.KEY = 'AIzaSyCpJDw6_i9VLW3piLDqQYObxddeCYmrZ88';
       this.ide = 0;
       this.viewFlag = 0;
   }
@@ -26,7 +26,6 @@ export class RideriderMapComponent implements OnInit {
   ngDoCheck(){
     if(this.feedChartService.ct1==this.feedChartService.ct2 && this.feedChartService.flag==1 && this.viewFlag==1){
       this.feedChartService.flag = 0;
-      console.log("maptime");
       this.initMap();
 
     }
@@ -58,7 +57,7 @@ initMap()
   let ct = 0;
 
   for(var item in work){
-    console.log(work[item]);
+
     cx+=work[item]["source"];
     cy+=work[item]["dest"];
     ct+=1;

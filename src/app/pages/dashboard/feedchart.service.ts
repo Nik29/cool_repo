@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class FeedchartService {
@@ -8,11 +9,12 @@ export class FeedchartService {
   baseUrl : string;
   ct1 : number;
   ct2 : number;
+  uid : string;
   constructor() {
     this.myHash = [];
     this.get_data = [];
     this.flag = 0;
-    this.baseUrl = 'https://aus-cbd-data-01.appspot.com/book/?service=gbi&gapn=aus-jumpin-01&id=';
+    this.baseUrl = 'https://uhire-data-01';
     this.ct1 = 0;
     this.ct2 = 0;
  }

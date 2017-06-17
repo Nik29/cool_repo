@@ -1,0 +1,23 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <div class="button-wrapper">
+        <button type="button" class="btn btn-primary" (click)="addServer()">Add server</button>
+      </div>
+    <tr class="black-muted-bg">
+      <th>Name</th>
+      <th>Server</th>
+      <th>Gapn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of metricsTableData" class="no-top-border">
+      <!--<td><img src="{{ ( item.image | baAppPicture ) }}" width="20" height="20"></td>-->
+      <!--<td ngClass="nowrap">{{item.browser}}</td>-->
+      <td>{{item.name}}</td>
+      <td contenteditable='true' (keyup.enter)="onServerClick($event, item.name)">{{item.server}}</td>
+      <td contenteditable='true' (keyup.enter)="onGapnClick($event, item.name)">{{item.gapn}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>

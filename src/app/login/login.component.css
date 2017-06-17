@@ -51,7 +51,7 @@ button {
     font-size:1.3em;
 }
 .form-container {
-    background:white;
+    background: #3B5998  url('../../assets/images/carands.jpg') no-repeat 250px;
     padding:3.5em;
     width:500px;
     position:fixed;

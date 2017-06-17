@@ -26,14 +26,6 @@ export const PAGES_MENU = [
           }
         },
         children: [
-          /*{
-            path: 'basictables',
-            data: {
-              menu: {
-                title: 'Basic Tables',
-              }
-            }
-          },*/
           {
             path: 'booking',
             data: {
@@ -65,7 +57,15 @@ export const PAGES_MENU = [
                 title: 'Drivers',
               }
             }
-          }
+          },
+          /*{
+            path: 'routes',
+            data: {
+              menu: {
+                title: 'Routes',
+              }
+            }
+          }*/
         ]
       },
       {
@@ -87,32 +87,35 @@ export const PAGES_MENU = [
                 title: 'Google Maps',
               }
             }
-          },
-          {
-            path: 'leafletmaps',
-            data: {
-              menu: {
-                title: 'Leaflet Maps',
-              }
-            }
-          },
-          {
-            path: 'bubblemaps',
-            data: {
-              menu: {
-                title: 'Bubble Maps',
-              }
-            }
-          },
-          {
-            path: 'linemaps',
-            data: {
-              menu: {
-                title: 'Line Maps',
-              }
-            }
           }
         ]
+      },
+
+      {
+        path: 'users',
+        data: {
+          menu: {
+            title: 'Users',
+            icon: 'ion-android-people',
+            selected: false,
+            expanded: false,
+            order: 700,
+            hidden :true
+          }
+        }
+      },
+      {
+        path: 'servers',
+        data: {
+          menu: {
+            title: 'Servers',
+            icon: 'ion-android-globe',
+            selected: false,
+            expanded: false,
+            order: 700,
+            hidden :true
+          }
+        }
       },
       {
         path: '',

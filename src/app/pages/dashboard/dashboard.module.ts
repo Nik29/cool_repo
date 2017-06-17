@@ -10,7 +10,7 @@ import { TrafficChart } from './trafficChart';
 import { LineChart } from './lineChart';
 import { Todo } from './todo';
 import { Calendar } from './calendar';
-import { CalendarService } from './calendar/calendar.service';
+//import { CalendarService } from './calendar/calendar.service';
 import { LineChartService } from './lineChart/lineChart.service';
 import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
@@ -35,7 +35,7 @@ import { RideriderMapComponent } from './riderider-map/riderider-map.component';
     RideriderMapComponent
   ],
   providers: [
-    CalendarService,
+  //  CalendarService,
     LineChartService,
     PieChartService,
     TodoService,
